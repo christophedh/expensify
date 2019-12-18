@@ -67,7 +67,6 @@ store.subscribe(() => {
   console.log(store.getState());
 });
 // unsubscribe()
-
 store.dispatch(incrementCountBy({incrementBy: 10}));
 
 store.dispatch(incrementCountBy());
@@ -79,5 +78,3 @@ store.dispatch(resetCount());
 store.dispatch(decrementCountBy());
 
 store.dispatch(setCount({set: -100}));
-
-console.log('ok2');

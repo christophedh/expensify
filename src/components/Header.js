@@ -12,8 +12,8 @@ export default class Header extends React.Component {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/create" activeClassName="is-active" exact>
-              Create
+            <NavLink to="/Add" activeClassName="is-active" exact>
+                Add
             </NavLink>
           </li>
           <li>

@@ -1,40 +1,53 @@
 {
-  "name": "boilerplate",
-  "version": "1.0.0",
-  "description": "",
-  "main": "input.js",
-  "scripts": {
-    "serve": "webpack-dev-server --mode development",
-    "watch": "webpack --watch --mode developement",
-    "build": "webpack --mode production"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bootstrap": "^4.4.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2",
-    "redux": "^4.0.4",
-    "uuid": "^3.3.3"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.7.4",
-    "@babel/plugin-proposal-class-properties": "^7.7.4",
-    "@babel/polyfill": "^7.7.0",
-    "@babel/preset-env": "^7.7.4",
-    "@babel/preset-react": "^7.7.4",
-    "autoprefixer": "^9.7.3",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.2.1",
-    "node-sass": "^4.13.0",
-    "postcss-loader": "^3.0.0",
-    "precss": "^4.0.0",
-    "sass-loader": "^8.0.0",
-    "style-loader": "^1.0.1",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.1.3"
-  }
+    "name": "boilerplate",
+    "version": "1.0.0",
+    "description": "",
+    "prettier": {
+        "trailingComma": "none",
+        "tabWidth": 4,
+        "semi": false,
+        "singleQuote": true
+    },
+    "main": "input.js",
+    "scripts": {
+        "serve": "webpack-dev-server --mode development",
+        "watch": "webpack --watch --mode developement",
+        "build": "webpack --mode production",
+        "restart": "fuser -k 8080/tcp 2>/dev/null & yarn serve"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@babel/plugin-transform-react-jsx": "^7.7.4",
+        "@babel/runtime": "^7.7.6",
+        "bootstrap": "^4.4.1",
+        "moment": "^2.24.0",
+        "react": "^16.12.0",
+        "react-dates": "^21.5.1",
+        "react-dom": "^16.12.0",
+        "react-redux": "^7.1.3",
+        "react-router": "^5.1.2",
+        "react-router-dom": "^5.1.2",
+        "react-with-direction": "^1.3.1",
+        "redux": "^4.0.4",
+        "uuid": "^3.3.3"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.7.4",
+        "@babel/plugin-proposal-class-properties": "^7.7.4",
+        "@babel/polyfill": "^7.7.0",
+        "@babel/preset-env": "^7.7.4",
+        "@babel/preset-react": "^7.7.4",
+        "autoprefixer": "^9.7.3",
+        "babel-loader": "^8.0.6",
+        "css-loader": "^3.2.1",
+        "node-sass": "^4.13.0",
+        "postcss-loader": "^3.0.0",
+        "precss": "^4.0.0",
+        "sass-loader": "^8.0.0",
+        "style-loader": "^1.0.1",
+        "webpack": "^4.41.2",
+        "webpack-cli": "^3.3.10",
+        "webpack-dev-server": "^3.1.3"
+    }
 }

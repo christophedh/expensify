@@ -1,13 +1,21 @@
 import React from 'react'
-
-const EditExpensePage = (props) => {
-    const { match: { params: { id } } } = props
-    console.log(id)
+import { connect } from 'react-redux'
+import ExpenseForm from './ExpenseForm'
+const EditExpensePage = props => {
+    const { history, expense } = props
     return (
         <div>
-            this is page for {id}
-    </div>
+            <h1>Expense form</h1>
+            <ExpenseForm
+                expense={expense}
+                onSubmitCompleted={() => {
+                    history.push('/')
+                }}
+            />
+        </div>
     )
 }
-
-export default EditExpensePage
+const mapStateToProps = ({ expenses }, props) => ({
+    expense: expenses.find(expense => expense.id === props.match.params.id)
+})
+export default connect(mapStateToProps)(EditExpensePage)
