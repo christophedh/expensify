@@ -5,9 +5,10 @@ import { AppRouter } from './routers/AppRouter'
 import store from './store/configureStore'
 import { Provider } from 'react-redux'
 import { addExpense } from './actions/expense'
-import { setTextFilter, setEndDate, setStartDate } from './actions/filter'
 import getVisibleExpenses from './selectors/expensesSelector'
 import './styles/style.scss'
+import moment from 'moment'
+import 'react-dates/lib/css/_datepicker.css'
 const uuidv4 = require('uuid/v4')
 store.subscribe(() => {
     const { expenses, filters } = store.getState()
@@ -20,7 +21,7 @@ store.dispatch(
         note: 'water bill',
         amount: 100,
         description: 'this is a water bill',
-        createdAt: 2500
+        createdAt: moment().valueOf()
     })
 )
 
@@ -30,7 +31,7 @@ store.dispatch(
         note: 'gas bill',
         amount: 200,
         description: 'this is a water bill',
-        createdAt: 2000
+        createdAt: moment().valueOf()
     })
 )
 
@@ -40,7 +41,7 @@ store.dispatch(
         note: 'hydro bill',
         amount: 3000,
         description: 'this is a water bill',
-        createdAt: 100
+        createdAt: moment().valueOf()
     })
 )
 store.dispatch(
@@ -49,7 +50,7 @@ store.dispatch(
         note: 'web service bill',
         amount: 50,
         description: 'this is a water bill',
-        createdAt: 4000
+        createdAt: moment().valueOf()
     })
 )
 const App = () => (

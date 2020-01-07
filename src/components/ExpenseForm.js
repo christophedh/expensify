@@ -1,10 +1,8 @@
 import React from 'react'
 import moment from 'moment'
-import { addExpense, editExpense } from '../actions/expense'
 import { SingleDatePicker } from 'react-dates'
-import 'react-dates/lib/css/_datepicker.css'
 import { connect } from 'react-redux'
-const uuidv4 = require('uuid/v4')
+import uuidv4 from 'uuid'
 
 class ExpenseForm extends React.Component {
     state = {
@@ -12,7 +10,8 @@ class ExpenseForm extends React.Component {
         note: '',
         amount: '',
         createdAt: moment(),
-        calendarFocused: false
+        calendarFocused: false,
+        error: ''
     }
     componentDidMount() {
         const { expense } = this.props
@@ -45,38 +44,36 @@ class ExpenseForm extends React.Component {
     onFocusChange = ({ focused }) => {
         this.setState(() => ({ calendarFocused: focused }))
     }
+    onDelete = () => {
+        this.props.onDelete()
+    }
     onSubmit = e => {
         e.preventDefault()
-        const { dispatch, expense } = this.props
         const { description, note, amount, createdAt } = this.state
-        if (expense) {
-            dispatch(
-                editExpense({
-                    expenseId: expense.id,
-                    expenseUpdate: {
-                        description,
-                        note,
-                        amount: parseFloat(amount),
-                        createdAt: createdAt.unix()
-                    }
-                })
-            )
-        } else {
-            dispatch(
-                addExpense({
-                    id: uuidv4(),
-                    description,
-                    note,
-                    amount: parseFloat(amount),
-                    createdAt: createdAt.unix()
-                })
-            )
+        const { expense } = this.props
+        let data
+        if (!description && !amount) {
+            this.setState(() => ({
+                error: 'Please provide description and amount'
+            }))
+
+            return
         }
-        this.props.onSubmitCompleted()
+
+        if (expense) {
+            data = {
+                expenseId: expense.id,
+                expenseUpdate: { description, note, amount, createdAt }
+            }
+        } else {
+            data = { description, note, amount, createdAt }
+        }
+        this.props.onSubmit(data)
     }
     render() {
         return (
             <div>
+                {this.state.error && <div>{this.state.error}</div>}
                 <form onSubmit={this.onSubmit}>
                     <input
                         type="text"
@@ -108,10 +105,15 @@ class ExpenseForm extends React.Component {
                     <button>
                         {this.props.expense ? 'Edit Expense' : 'Add Expense'}
                     </button>
+                    {this.props.expense && (
+                        <button type="button" onClick={this.onDelete}>
+                            Delete
+                        </button>
+                    )}
                 </form>
             </div>
         )
     }
 }
 
-export default connect()(ExpenseForm)
+export default ExpenseForm
