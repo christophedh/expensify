@@ -5,14 +5,14 @@ import { AppRouter } from './routers/AppRouter'
 import store from './store/configureStore'
 import { Provider } from 'react-redux'
 import { addExpense } from './actions/expense'
-import getVisibleExpenses from './selectors/expensesSelector'
+// import getVisibleExpenses from './selectors/expensesSelector'
 import './styles/style.scss'
 import moment from 'moment'
 import 'react-dates/lib/css/_datepicker.css'
 const uuidv4 = require('uuid/v4')
 store.subscribe(() => {
-    const { expenses, filters } = store.getState()
-    console.log(getVisibleExpenses(expenses, filters))
+    // const { expenses, filters } = store.getState()
+    // console.log(getVisibleExpenses(expenses, filters))
 })
 
 store.dispatch(
@@ -28,7 +28,7 @@ store.dispatch(
 store.dispatch(
     addExpense({
         id: uuidv4(),
-        note: 'gas bill',
+        note: 'gas bill 2',
         amount: 200,
         description: 'this is a water bill',
         createdAt: moment().valueOf()
