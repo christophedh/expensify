@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { removeExpense } from '../actions/expense'
 import { NavLink } from 'react-router-dom'
 import moment from 'moment'
+import numeral from 'numeral'
 export const Expense = ({ dispatch, id, description, amount, createdAt }) => (
     <div>
         <h3>
@@ -11,7 +12,8 @@ export const Expense = ({ dispatch, id, description, amount, createdAt }) => (
             </NavLink>
         </h3>
         <p>
-            {amount} - {moment(createdAt).format('LL')}
+            {numeral(amount).format('$0,0.00')} <br />
+            {moment(createdAt).format('LL')}
         </p>
         <button
             onClick={() => {

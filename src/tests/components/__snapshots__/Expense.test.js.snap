@@ -11,8 +11,9 @@ exports[`should Expense component test 1`] = `
     </NavLink>
   </h3>
   <p>
-    123
-     - 
+    $123.00
+     
+    <br />
     December 31, 1969
   </p>
   <button
