@@ -10,17 +10,20 @@
     },
     "main": "input.js",
     "scripts": {
+        "start": "node ./server/server.js",
         "serve": "webpack-dev-server --open --config webpack.dev.js",
-        "serve:prod": "",
+        "serve:prod": "fuser -k 8080/tcp 2>/dev/null & node ./server/server.js",
         "watch": "webpack --watch --mode developement",
         "build": "webpack --open --config webpack.prod.js",
         "restart": "fuser -k 8080/tcp 2>/dev/null & yarn serve",
-        "test": "jest --config=jest.config.json --watch"
+        "test": "jest --config=jest.config.json --watch",
+        "heroku-postbuild": "yarn run build"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
         "bootstrap": "^4.4.1",
+        "express": "^4.17.1",
         "mini-css-extract-plugin": "^0.9.0",
         "moment": "^2.24.0",
         "react": "^16.12.0",
