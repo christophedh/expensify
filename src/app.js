@@ -9,7 +9,6 @@ import moment from 'moment'
 import './styles/style.scss'
 import 'react-dates/lib/css/_datepicker.css'
 const uuidv4 = require('uuid/v4')
-console.log('test')
 // store.subscribe(() => {
 //     // const { expenses, filters } = store.getState()
 //     // console.log(getVisibleExpenses(expenses, filters))

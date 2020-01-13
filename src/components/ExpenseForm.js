@@ -60,14 +60,14 @@ class ExpenseForm extends React.Component {
             return
         }
 
+        data = { description, note, amount: parseFloat(amount), createdAt }
         if (expense) {
             data = {
                 expenseId: expense.id,
-                expenseUpdate: { description, note, amount, createdAt }
+                expenseUpdate: data
             }
-        } else {
-            data = { description, note, amount, createdAt }
         }
+
         this.props.onSubmit(data)
     }
     render() {
