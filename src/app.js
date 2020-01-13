@@ -14,44 +14,44 @@ const uuidv4 = require('uuid/v4')
 //     // console.log(getVisibleExpenses(expenses, filters))
 // })
 
-store.dispatch(
-    addExpense({
-        id: uuidv4(),
-        note: 'water bill',
-        amount: 100,
-        description: 'this is a water bill',
-        createdAt: moment().valueOf()
-    })
-)
+// store.dispatch(
+//     addExpense({
+//         id: uuidv4(),
+//         note: 'water bill',
+//         amount: 100,
+//         description: 'this is a water bill',
+//         createdAt: moment().valueOf()
+//     })
+// )
 
-store.dispatch(
-    addExpense({
-        id: uuidv4(),
-        note: 'gas bill 2',
-        amount: 200,
-        description: 'this is a water bill',
-        createdAt: moment().valueOf()
-    })
-)
+// store.dispatch(
+//     addExpense({
+//         id: uuidv4(),
+//         note: 'gas bill 2',
+//         amount: 200,
+//         description: 'this is a water bill',
+//         createdAt: moment().valueOf()
+//     })
+// )
 
-store.dispatch(
-    addExpense({
-        id: uuidv4(),
-        note: 'hydro bill',
-        amount: 3000,
-        description: 'this is a water bill',
-        createdAt: moment().valueOf()
-    })
-)
-store.dispatch(
-    addExpense({
-        id: uuidv4(),
-        note: 'web service bill',
-        amount: 50,
-        description: 'this is a water bill',
-        createdAt: moment().valueOf()
-    })
-)
+// store.dispatch(
+//     addExpense({
+//         id: uuidv4(),
+//         note: 'hydro bill',
+//         amount: 3000,
+//         description: 'this is a water bill',
+//         createdAt: moment().valueOf()
+//     })
+// )
+// store.dispatch(
+//     addExpense({
+//         id: uuidv4(),
+//         note: 'web service bill',
+//         amount: 50,
+//         description: 'this is a water bill',
+//         createdAt: moment().valueOf()
+//     })
+// )
 const App = () => (
     <Provider store={store}>
         <AppRouter />
