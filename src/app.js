@@ -8,6 +8,8 @@ import './styles/style.scss'
 import 'react-dates/lib/css/_datepicker.css'
 import '../firebase/firebase'
 
+process.env
+
 const App = () => (
     <Provider store={store}>
         <AppRouter />

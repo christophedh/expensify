@@ -68,7 +68,10 @@ test('should call onSubmit prop for valid submission', () => {
     const { id, ...expenseUpdate } = expenses[0]
     const data = {
         expenseId: id,
-        expenseUpdate
+        expenseUpdate: {
+            ...expenseUpdate,
+            createdAt: expenseUpdate.createdAt.valueOf()
+        }
     }
     const onSubmitSpy = jest.fn()
     const wrapper = shallow(

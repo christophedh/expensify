@@ -52,6 +52,7 @@ class ExpenseForm extends React.Component {
         const { description, note, amount, createdAt } = this.state
         const { expense } = this.props
         let data
+
         if (!description && !amount) {
             this.setState(() => ({
                 error: 'Please provide description and amount'
@@ -60,7 +61,12 @@ class ExpenseForm extends React.Component {
             return
         }
 
-        data = { description, note, amount: parseFloat(amount), createdAt }
+        data = {
+            description,
+            note,
+            amount: parseFloat(amount),
+            createdAt: createdAt.valueOf()
+        }
         if (expense) {
             data = {
                 expenseId: expense.id,
