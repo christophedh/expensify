@@ -1,4 +1,3 @@
-const uuidv4 = require('uuid/v4')
 import database from '../../firebase/firebase'
 export const addExpense = (expense = {}) => ({
     type: 'ADD_EXPENSE',
@@ -67,6 +66,17 @@ export const startRemoveExpense = id => {
             .remove()
             .then(() => {
                 dispatch(removeExpense(id))
+            })
+    }
+}
+
+export const startUpdateExpense = ({ expenseId, expenseUpdate }) => {
+    return async dispatch => {
+        return await database
+            .ref(`expenses/${expenseId}`)
+            .update(expenseUpdate)
+            .then(() => {
+                dispatch(editExpense({ expenseId, expenseUpdate }))
             })
     }
 }

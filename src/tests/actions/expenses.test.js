@@ -5,7 +5,8 @@ import {
     removeExpense,
     setExpense,
     startSetExpense,
-    startRemoveExpense
+    startRemoveExpense,
+    startUpdateExpense
 } from '../../actions/expense'
 import expensesReducer from '../../reducers/expensesReducer'
 import expenses from '../fixtures/expensesFixtures'
@@ -198,6 +199,39 @@ test('should remove the expense with id from firebase', done => {
         })
         .then(snaptshot => {
             expect(snaptshot.val()).toBeFalsy()
+            done()
+        })
+})
+
+test('should expense update', done => {
+    const store = createMockStore({})
+    const id = expenses[0].id
+    const expenseUpdate = {
+        description: 'a test description'
+    }
+
+    store
+        .dispatch(
+            startUpdateExpense({
+                expenseId: id,
+                expenseUpdate
+            })
+        )
+        .then(() => {
+            const actions = store.getActions()
+            expect(actions[0]).toEqual({
+                type: 'EDIT_EXPENSE',
+                expenseId: id,
+                expenseUpdate
+            })
+
+            return database.ref(`expenses/${id}`).once('value')
+        })
+        .then(snaptshot => {
+            expect({ id: snaptshot.key, ...snaptshot.val() }).toEqual({
+                ...expenses[0],
+                ...expenseUpdate
+            })
             done()
         })
 })
