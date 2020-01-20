@@ -4,7 +4,8 @@ import {
     editExpense,
     removeExpense,
     setExpense,
-    startSetExpense
+    startSetExpense,
+    startRemoveExpense
 } from '../../actions/expense'
 import expensesReducer from '../../reducers/expensesReducer'
 import expenses from '../fixtures/expensesFixtures'
@@ -166,6 +167,28 @@ test('should fetch the expense from firebase', done => {
         expect(actions[0]).toEqual({
             type: 'SET_EXPENSE',
             expenses
+        })
+        done()
+    })
+})
+
+test('should remove the expense with id', () => {
+    const action = {
+        type: 'REMOVE_EXPENSE',
+        expenseId: expenses[0].id
+    }
+
+    const state = expensesReducer(expenses, action)
+
+    expect(state).toEqual([expenses[1], expenses[2]])
+})
+test('should remove the expense with id from firebase', done => {
+    const store = createMockStore({})
+    store.dispatch(startRemoveExpense(expenses[0].id)).then(() => {
+        const actions = store.getActions()
+        expect(actions[0]).toEqual({
+            type: 'REMOVE_EXPENSE',
+            expenseId: expenses[0].id
         })
         done()
     })

@@ -59,3 +59,14 @@ export const startSetExpense = () => {
             })
     }
 }
+
+export const startRemoveExpense = id => {
+    return async dispatch => {
+        return await database
+            .ref(`expenses/${id}`)
+            .remove()
+            .then(() => {
+                dispatch(removeExpense(id))
+            })
+    }
+}
