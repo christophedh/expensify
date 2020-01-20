@@ -6,9 +6,8 @@ import store from './store/configureStore'
 import { Provider } from 'react-redux'
 import './styles/style.scss'
 import 'react-dates/lib/css/_datepicker.css'
-import '../firebase/firebase'
-
-process.env
+import database from '../firebase/firebase'
+import { startSetExpense } from './actions/expense'
 
 const App = () => (
     <Provider store={store}>
@@ -16,10 +15,8 @@ const App = () => (
     </Provider>
 )
 
-ReactDom.render(<App />, document.getElementById('app'))
+ReactDom.render(<p>Loading ...</p>, document.getElementById('app'))
 
-// const uuidv4 = require('uuid/v4')
-// store.subscribe(() => {
-//     // const { expenses, filters } = store.getState()
-//     // console.log(getVisibleExpenses(expenses, filters))
-// })
+store.dispatch(startSetExpense()).then(() => {
+    ReactDom.render(<App />, document.getElementById('app'))
+})
