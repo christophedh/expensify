@@ -182,14 +182,22 @@ test('should remove the expense with id', () => {
 
     expect(state).toEqual([expenses[1], expenses[2]])
 })
+
 test('should remove the expense with id from firebase', done => {
     const store = createMockStore({})
-    store.dispatch(startRemoveExpense(expenses[0].id)).then(() => {
-        const actions = store.getActions()
-        expect(actions[0]).toEqual({
-            type: 'REMOVE_EXPENSE',
-            expenseId: expenses[0].id
+    store
+        .dispatch(startRemoveExpense(expenses[0].id))
+        .then(() => {
+            const actions = store.getActions()
+            expect(actions[0]).toEqual({
+                type: 'REMOVE_EXPENSE',
+                expenseId: expenses[0].id
+            })
+
+            return database.ref(`expenses/${expenses[0].id}`).once('value')
         })
-        done()
-    })
+        .then(snaptshot => {
+            expect(snaptshot.val()).toBeFalsy()
+            done()
+        })
 })
