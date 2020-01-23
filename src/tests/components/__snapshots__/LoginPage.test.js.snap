@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should LoginPage component snapshot 1`] = `
+<div>
+  <p>
+    <button
+      onClick={[MockFunction]}
+      type="button"
+    >
+      Login
+    </button>
+  </p>
+</div>
+`;

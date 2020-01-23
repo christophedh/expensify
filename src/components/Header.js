@@ -1,19 +1,25 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { startLogOut } from '../actions/auth'
 
-export default class Header extends React.Component {
+export class Header extends React.Component {
     render() {
         return (
             <header>
                 <h1>Expensify</h1>
                 <ul>
                     <li>
-                        <NavLink to="/" activeClassName="is-active" exact>
+                        <NavLink
+                            to="/dashboard"
+                            activeClassName="is-active"
+                            exact
+                        >
                             Go home
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/Add" activeClassName="is-active" exact>
+                        <NavLink to="/add" activeClassName="is-active" exact>
                             Add an expense
                         </NavLink>
                     </li>
@@ -23,7 +29,13 @@ export default class Header extends React.Component {
                         </NavLink>
                     </li>
                 </ul>
+                <button onClick={this.props.startLogOut}>Logout</button>
             </header>
         )
     }
 }
+
+const mapDispatchToProps = dispatch => ({
+    startLogOut: () => dispatch(startLogOut())
+})
+export default connect(undefined, mapDispatchToProps)(Header)
