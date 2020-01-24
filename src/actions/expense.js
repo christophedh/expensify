@@ -7,7 +7,8 @@ export const addExpense = (expense = {}) => ({
 })
 
 export const startAddExpense = (expenseData = {}) => {
-    return async dispatch => {
+    return async (dispatch, getState) => {
+        const uid = getState().auth.uid
         const {
             description = '',
             amount = 0,
@@ -16,7 +17,7 @@ export const startAddExpense = (expenseData = {}) => {
         } = expenseData
         const expense = { description, amount, note, createdAt }
         return await database
-            .ref('expenses')
+            .ref(`users/${uid}/expenses`)
             .push(expense)
             .then(snaptshot => {
                 dispatch(
@@ -45,9 +46,10 @@ export const setExpense = expenses => ({
     expenses
 })
 export const startSetExpense = () => {
-    return async dispatch => {
+    return async (dispatch, getState) => {
+        const uid = getState().auth.uid
         return await database
-            .ref('expenses')
+            .ref(`/users/${uid}/expenses`)
             .once('value')
             .then(snaptshot => {
                 const expenses = []
@@ -60,9 +62,10 @@ export const startSetExpense = () => {
 }
 
 export const startRemoveExpense = id => {
-    return async dispatch => {
+    return async (dispatch, getState) => {
+        const uid = getState().auth.uid
         return await database
-            .ref(`expenses/${id}`)
+            .ref(`/users/${uid}/expenses/${id}`)
             .remove()
             .then(() => {
                 dispatch(removeExpense(id))
@@ -71,9 +74,10 @@ export const startRemoveExpense = id => {
 }
 
 export const startUpdateExpense = ({ expenseId, expenseUpdate }) => {
-    return async dispatch => {
+    return async (dispatch, getState) => {
+        const uid = getState().auth.uid
         return await database
-            .ref(`expenses/${expenseId}`)
+            .ref(`users/${uid}/expenses/${expenseId}`)
             .update(expenseUpdate)
             .then(() => {
                 dispatch(editExpense({ expenseId, expenseUpdate }))

@@ -6,11 +6,11 @@ import { startUpdateExpense, startRemoveExpense } from '../actions/expense'
 export class EditExpensePage extends React.Component {
     onSubmit = expenseUpdate => {
         this.props.editExpense(expenseUpdate)
-        this.props.history.push('/')
+        this.props.history.push('/dashboard')
     }
     onDelete = () => {
         this.props.removeExpense(this.props.expense.id)
-        this.props.history.push('/')
+        this.props.history.push('/dashboard')
     }
     render() {
         return (

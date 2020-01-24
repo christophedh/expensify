@@ -2,19 +2,22 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
 import Header from '../components/Header'
-export const PrivateRoute = ({ isAuth, component: Component, ...props }) =>
-    (isAuth && (
+import { history } from './AppRouter'
+export const PrivateRoute = ({ isAuth, component: Component, ...rest }) => {
+    return (
         <Route
-            component={() => (
-                <div>
-                    <Header />
-                    <Component />
-                </div>
-            )}
-            {...props}
+            component={props =>
+                (isAuth && (
+                    <div>
+                        <Header />
+                        <Component {...props} />
+                    </div>
+                )) || <Redirect to="/" />
+            }
+            {...rest}
         />
-    )) || <Redirect to="/" />
-
+    )
+}
 const mapStateToProps = state => ({
     isAuth: !!state.auth.uid
 })

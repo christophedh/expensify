@@ -28,11 +28,11 @@ test('should handle editExpense', () => {
     const data = { expenseId: id, expenseUpdate }
     wrapper.find(ExpenseForm).prop('onSubmit')(data)
     expect(editExpense).toHaveBeenCalledWith(data)
-    expect(history.push).toHaveBeenCalledWith('/')
+    expect(history.push).toHaveBeenCalledWith('/dashboard')
 })
 
 test('should handle removeExpense', () => {
     wrapper.find(ExpenseForm).prop('onDelete')()
     expect(removeExpense).toHaveBeenCalledWith(expenses[0].id)
-    expect(history.push).toHaveBeenCalledWith('/')
+    expect(history.push).toHaveBeenCalledWith('/dashboard')
 })

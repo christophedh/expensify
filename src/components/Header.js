@@ -15,17 +15,12 @@ export class Header extends React.Component {
                             activeClassName="is-active"
                             exact
                         >
-                            Go home
+                            Home
                         </NavLink>
                     </li>
                     <li>
                         <NavLink to="/add" activeClassName="is-active" exact>
                             Add an expense
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/help" activeClassName="is-active" exact>
-                            Help
                         </NavLink>
                     </li>
                 </ul>
