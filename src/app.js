@@ -13,7 +13,6 @@ import LoadingPage from './components/LoadingPage'
 
 const renderApp = () => {
     ReactDom.render(<App />, document.getElementById('app'))
-    hasRendered = true
 }
 const App = () => (
     <Provider store={store}>
