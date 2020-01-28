@@ -1,22 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should Expense component test 1`] = `
-<div>
-  <h3>
-    <NavLink
-      exact={true}
-      to="/edit/1"
+<div
+  className="list-wrapper"
+>
+  <Link
+    className="list-item"
+    to="/edit/1"
+  >
+    <div>
+      <h3
+        className="list-item__title"
+      >
+        gum
+      </h3>
+      <span
+        className="list-item__sub-title"
+      >
+        December 31, 1969
+      </span>
+    </div>
+    <h3
+      className="list-item__data"
     >
-      gum
-    </NavLink>
-  </h3>
-  <p>
-    $123.00
-     
-    <br />
-    December 31, 1969
-  </p>
+      <span
+        className="show-for-desktop"
+      >
+        Amount
+      </span>
+      $123.00
+       
+      <br />
+    </h3>
+  </Link>
   <button
+    className="button button--secondary button--list-item"
     onClick={[Function]}
   >
     Remove

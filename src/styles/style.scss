@@ -1,2 +1,13 @@
-@import "~bootstrap/scss/bootstrap";
-@import "_base";
+@import '~bootstrap/scss/bootstrap';
+@import '_settings';
+@import '_base';
+@import './components/box-layout';
+@import './components/button';
+@import './components/header';
+@import './components/_content-container';
+@import './components/_page-header';
+@import './components/_input';
+@import './components/_form';
+@import './components/_visibility';
+@import './components/_list';
+@import './components/_loader';

@@ -5,12 +5,18 @@ import { startLogin } from '../actions/auth'
 export class LoginPage extends React.Component {
     render() {
         return (
-            <div>
-                <p>
-                    <button type="button" onClick={this.props.startLogin}>
-                        Login
+            <div className="box-layout">
+                <div className="box-layout__box">
+                    <h1 className="box-layout__title">Expensify</h1>
+                    <p>Add your expense</p>
+                    <button
+                        className="button"
+                        type="button"
+                        onClick={this.props.startLogin}
+                    >
+                        Login with google
                     </button>
-                </p>
+                </div>
             </div>
         )
     }

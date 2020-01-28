@@ -1,5 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color: $dark-gey;
+    line-height: 1.6;
+}
+
 .is-active {
-    color:red;
+    color: red;
     font-weight: bolder;
     font-size: 24px;
 }

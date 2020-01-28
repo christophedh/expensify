@@ -1,0 +1,38 @@
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $m-size;
+
+    @media (min-width: $desktop-breakpoint) {
+        flex-direction: row;
+        margin-bottom: $l-size;
+    }
+}
+
+.input-group__item {
+    margin-bottom: $s-size;
+
+    @media (min-width: $desktop-breakpoint) {
+        flex-direction: row;
+        margin: 0 $s-size 0 0;
+    }
+}
+
+.text-input {
+    border: 1px solid #cacccd;
+    height: 48px;
+    font-size: $font-size-large;
+    font-weight: 300;
+    padding: $s-size;
+    @media (min-width: $desktop-breakpoint) {
+    }
+}
+
+.select {
+    height: 48px;
+}
+
+.textarea {
+    @extend .text-input;
+    height: 10rem;
+}

@@ -1,44 +1,90 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render ExpenseList with expense 1`] = `
-<div>
-  <h1>
-    Expense List
-  </h1>
-  <Connect(Expense)
-    amount={123}
-    createdAt={0}
-    description="gum"
-    id="1"
-    key="1"
-    note="gum"
-  />
-  <Connect(Expense)
-    amount={7890}
-    createdAt={-1000}
-    description="rent"
-    id="2"
-    key="2"
-    note="rent"
-  />
-  <Connect(Expense)
-    amount={4000}
-    createdAt={1000}
-    description="Credit Card"
-    id="3"
-    key="3"
-    note="Credit Card"
-  />
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Expense
+    </div>
+    <div
+      className="show-for-mobile"
+    >
+      Amount
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Expenses
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <Connect(Expense)
+      amount={123}
+      createdAt={0}
+      description="gum"
+      id="1"
+      key="1"
+      note="gum"
+    />
+    <Connect(Expense)
+      amount={7890}
+      createdAt={-1000}
+      description="rent"
+      id="2"
+      key="2"
+      note="rent"
+    />
+    <Connect(Expense)
+      amount={4000}
+      createdAt={1000}
+      description="Credit Card"
+      id="3"
+      key="3"
+      note="Credit Card"
+    />
+  </div>
 </div>
 `;
 
 exports[`should render ExpenseList with no expense 1`] = `
-<div>
-  <h1>
-    Expense List
-  </h1>
-  <p>
-    No expenses
-  </p>
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Expense
+    </div>
+    <div
+      className="show-for-mobile"
+    >
+      Amount
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Expenses
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <div
+      className="list-item list-item__message"
+    >
+      No expenses
+    </div>
+  </div>
 </div>
 `;

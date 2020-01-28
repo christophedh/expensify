@@ -47,32 +47,43 @@ export class ExpenseListFilters extends React.Component {
 
     render() {
         return (
-            <div>
-                <input
-                    type="text"
-                    value={this.props.filters.text}
-                    onChange={this.onTextChange}
-                />
-                <select
-                    value={this.props.filters.sortBy}
-                    onChange={this.setSortBy}
-                >
-                    <option value="date">Date</option>
-                    <option value="amount">Amount</option>
-                </select>
+            <div className="content-container">
+                <div className="input-group">
+                    <div className="input-group__item">
+                        <input
+                            className="text-input"
+                            type="text"
+                            placeholder="Search expense"
+                            value={this.props.filters.text}
+                            onChange={this.onTextChange}
+                        />
+                    </div>
+                    <div className="input-group__item">
+                        <select
+                            className="select"
+                            value={this.props.filters.sortBy}
+                            onChange={this.setSortBy}
+                        >
+                            <option value="date">Date</option>
+                            <option value="amount">Amount</option>
+                        </select>
+                    </div>
+                    <div className="input-group__item">
+                        <DateRangePicker
+                            startDate={this.state.startDate}
+                            startDateId={'f2ea0227-995f-4846-a900-24dbbad9f022'}
+                            endDate={this.state.endDate}
+                            endDateId={'2ea0227-995f-4846-a900-24dbbad9f023'}
+                            isOutsideRange={() => false}
+                            onDatesChange={this.onDatesChange}
+                            focusedInput={this.state.focusedInput}
+                            onFocusChange={focusedInput =>
+                                this.setState({ focusedInput })
+                            }
+                        />
+                    </div>
+                </div>
                 <br />
-                <DateRangePicker
-                    startDate={this.state.startDate}
-                    startDateId={'f2ea0227-995f-4846-a900-24dbbad9f022'}
-                    endDate={this.state.endDate}
-                    endDateId={'2ea0227-995f-4846-a900-24dbbad9f023'}
-                    isOutsideRange={() => false}
-                    onDatesChange={this.onDatesChange}
-                    focusedInput={this.state.focusedInput}
-                    onFocusChange={focusedInput =>
-                        this.setState({ focusedInput })
-                    }
-                />
             </div>
         )
     }
